@@ -1,8 +1,6 @@
-## Welcome to GitHub Pages
+## CPP Everyday 
 
-You can use the [editor on GitHub](https://github.com/lqy845650069/lqy845650069.github.io/edit/main/README.md) to maintain and preview the content for your website in Markdown files.
-
-Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
+本Page建立于2022.5.24 23:00，主要用于帮助自己记忆一些CPP知识点
 
 ### Markdown
 
