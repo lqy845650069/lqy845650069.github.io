@@ -5,7 +5,7 @@
 
 ## Day 0 static关键字
 static关键字可分为类内static，类外static
-###类内static
+### 类内static
 类内static主要表示在类的实例间共享的变量/函数，类内static变量需要在**类外**初始化，类内static函数**没有this指针**
 ### 类外static
 类外static可以分为局部static和全局static
