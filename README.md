@@ -14,7 +14,7 @@ static关键字可分为类内static，类外static
 类外static可以分为局部static和全局static
 ####  局部static
 局部static变量的生存期与整个程序相同，但只对于当前作用域可见，该变量在第一次执行到的时候进行初始化，之后将跳过此语句。C++11后C++保证了static的线程安全，因此可以通过static来实现单例模式
-```
+```C++
 class Singleton
 {
 public:
