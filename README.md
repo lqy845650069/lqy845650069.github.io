@@ -51,5 +51,6 @@ int* a = (int*)(&MAX_AGE);
 C++规定可以通过const重载函数，类的const对象只能调用const函数，不能调用非const函数，而非const对象在调用函数时，会优先调用表明const的函数（如果有）
 
 ## Day 2 mutable关键字
-TODO
+- 当方法是 `const` 时，还是可以修改被 `mutable` 关键字修饰的变量
+- 当使用lambda表达式时，当没有 `mutable` 关键字时，lambda表达式只能使用 `=` 值传递的变量（引用传递无需 `mutable` ），加上 `mutable` 后可以对变量进行修改，但不会对外部的实参产生影响（和函数传参一样）
 
