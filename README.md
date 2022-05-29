@@ -5,15 +5,15 @@
 知识点并没有按照特定顺序，可通过目录查询
 
 ## Day 0 static关键字
-static关键字可分为类内static，类外static
+`static`关键字可分为类内`static`，类外`static`
 
 ### 类内static
-类内static主要表示在类的实例间共享的变量/函数，类内static变量需要在**类外**初始化，类内static函数**没有this指针**。那么显然，类的静态函数不能访问非静态的变量/函数。
+类内`static`主要表示在类的实例间共享的变量/函数，类内`static`变量需要在**类外**初始化，类内`static`函数**没有`this`指针**。那么显然，类的静态函数不能访问非静态的变量/函数。
 
 ### 类外static
-类外static可以分为局部static和全局static
+类外`static`可以分为局部 `static` 和全局`static`
 ####  局部static
-局部static变量的生存期与整个程序相同，但只对于当前作用域可见，该变量在第一次执行到的时候进行初始化，之后将跳过此语句。C++11后C++保证了static的线程安全，因此可以通过static来实现单例模式
+局部`static`变量的生存期与整个程序相同，但只对于当前作用域可见，该变量在第一次执行到的时候进行初始化，之后将跳过此语句。C++11后C++保证了`static`的线程安全，因此可以通过`static`来实现单例模式
 ```C++
 class Singleton
 {
@@ -55,8 +55,8 @@ C++规定可以通过const重载函数，类的const对象只能调用const函�
 - 当使用lambda表达式时，当没有 `mutable` 关键字时，lambda表达式只能使用 `=` 值传递的变量（引用传递无需 `mutable` ），加上 `mutable` 后可以对变量进行修改，但不会对外部的实参产生影响（和函数传参一样）
 
 ## Day 3 C++的四个显示转换
-- `static_cast` 当方法是 `const` 时，还是可以修改被 `mutable` 关键字修饰的变量
-- `dynamic_cast` 是当我们想要做一些（沿继承层次结构的）强制类型转换时，C++提供的一种安全的转换， `dynamic_cast` 通过运行时的类型检查，确保我们实际的转换是有效的，安全的
+- `static_cast` 静态类型转换，做编译时检查，可以实现C++中内置基本数据类型之间的相互转换，enum、struct、 int、char、float等，能进行类层次间的向上类型转换和向下类型转换（向下不安全，因为没有进行动态类型检查）。它不能进行无关类型(如非基类和子类)指针之间的转换，也不能作用包含底层const的对象
+- `dynamic_cast` 是当我们想要做一些（沿继承层次结构的指针或引用）强制类型转换时，C++提供的一种安全的转换， `dynamic_cast` 通过运行时的类型检查，确保我们实际的转换是有效的，安全的，若指针转换失败返回NULL，若引用返回失败抛出bad_cast异常。使用dynamic_cast父类一定要有虚函数，否则编译不通过
 ```C++
 class Entity{
 };
@@ -68,3 +68,8 @@ Player *p = new Player;
 e = dynamic_cast<Entity*>(p);
 p = dynamic_cast<Player*>(e); // return nullptr;
 ```
+- `reinterpret_cast` 此标识符的意思即为将数据的二进制形式重新解释，但是不改变其值，有着和C风格的强制转换同样的能力。它可以转化任何内置的数据类型为其他任何的数据类型，也可以转化任何指针类型为其他的类型。它甚至可以转化内置的数据类型为指针，无须考虑类型安全或者常量的情形，不安全
+- `const_cast` 移除或者添加 `const` 属性，`const_cast` 只能用于指针或引用，并且只能改变对象的底层 `const` （顶层 `const` ，本身是 `const` ，底层 `const` ，指向对象const）
+
+## Day 4 this指针
+`this`是一个指向当前对象实例的指针，并且属于当前对象。`this`指针是一个顶层`const`，形如`Entity* const this`，当当前函数为`const`是，`this`指针同时也是一个底层`const`，形如`const Entity* const this`
