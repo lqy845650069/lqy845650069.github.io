@@ -1,18 +1,19 @@
-**CPP Everyday**
+# CPP Everyday
 
-- [Day 0 static关键字](#day-0-static关键字)
-	- [类内static](#类内static)
-	- [类外static](#类外static)
-		- [局部static](#局部static)
-		- [全局static](#全局static)
-	- [static和const能否同时使用](#static和const能否同时使用)
-- [Day 1 const关键字](#day-1-const关键字)
-	- [类外的const](#类外的const)
-	- [类中的const](#类中的const)
-- [Day 2 mutable关键字](#day-2-mutable关键字)
-- [Day 3 C++的四个显示转换](#day-3-c的四个显示转换)
-- [Day 4 this指针](#day-4-this指针)
-- [Day 5 C++线程1](#day-5-c线程1)
+- [CPP Everyday](#cpp-everyday)
+	- [Day 0 static关键字](#day-0-static关键字)
+		- [类内static](#类内static)
+		- [类外static](#类外static)
+			- [局部static](#局部static)
+			- [全局static](#全局static)
+		- [static和const能否同时使用](#static和const能否同时使用)
+	- [Day 1 const关键字](#day-1-const关键字)
+		- [类外的const](#类外的const)
+		- [类中的const](#类中的const)
+	- [Day 2 mutable关键字](#day-2-mutable关键字)
+	- [Day 3 C++的四个显示转换](#day-3-c的四个显示转换)
+	- [Day 4 this指针](#day-4-this指针)
+	- [Day 5 C++线程1](#day-5-c线程1)
 
 本[Page](https://lqy845650069.github.io)建立于2022.5.24 23:00，主要用于帮助自己记忆一些CPP知识点
 
@@ -40,8 +41,8 @@ class Singleton
 public:
  static Singleton& Get()
  {
-  static Singleton instance;
-  return instance;
+	static Singleton instance;
+	return instance;
  }
 };
 ```
@@ -90,9 +91,10 @@ C++规定可以通过const重载函数，类的const对象只能调用const函�
 
 ```C++
 class Entity{
+
 };
 class Player: public Entity{
- int hp;
+	int hp;
 };
 Entity *e = new Entity;
 Player *p = new Player;
@@ -114,19 +116,19 @@ p = dynamic_cast<Player*>(e); // return nullptr;
 #include<thread>
 static bool s_Finished = false;
 void DoWork(){
- while(!s_Finished){
-  std::cout<<"Working\n";
- }
+	while(!s_Finished){
+	std::cout<<"Working\n";
+	}
 }
 
 int main(){
- std::thread worker(DoWork);
- std::cin.get(); // Keep worker working
- s_Finished = true; // Stop worker working
- worker.join();
- std::cout<<"Finished !\n";
- std::cin.get();
- return 0;
+	std::thread worker(DoWork);
+	std::cin.get(); // Keep worker working
+	s_Finished = true; // Stop worker working
+	worker.join();
+	std::cout<<"Finished !\n";
+	std::cin.get();
+	return 0;
 }
 ```
 
