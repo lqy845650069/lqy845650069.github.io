@@ -1,4 +1,4 @@
-[CPP Everyday](#cpp-everyday)
+- [CPP Everyday](#cpp-everyday)
 	- [Day 0 static关键字](#day-0-static关键字)
 		- [类内static](#类内static)
 		- [类外static](#类外static)
